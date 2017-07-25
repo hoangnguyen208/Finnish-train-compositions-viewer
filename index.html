@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en" ng-app = "myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Finnish train composition viewer</title>
+
+    <!-- Link css file -->
+    <link href = "css/main.css" rel = "stylesheet" type = "text/css" />
+
+    <!-- Link Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Add bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Link angular libraries -->
+    <script src = "app\lib\angular.min.js"></script>
+    <script src = "app\app.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Include header view -->
+    <header ng-include = "'header.html'"></header>
+
+    <!-- Include the main view -->
+    <div class="content">
+      <div ng-controller = "appCtrl">
+        <div id = "station">
+          <label for=""><h2>Select a station:</h2></label>
+          <br></br>
+          <select ng-model = "selectedStation" ng-change = "loadTrains()">
+            <option ng-value="station" ng-repeat = "station in stations">{{station.stationName}}</option>
+          </select>
+        </div>
+
+        <div class = "container">
+          <div class = "row">
+            <div id = "trainRunningList" class = "col-md-6 col-sm-6 col-xs-12">
+              <h3>CURRENTLY RUNNING</h3>
+              <ul id = "runningList">
+                <li ng-repeat="composition in trains" ng-show = "composition.runningCurrently">
+                  {{composition.trainType}} {{composition.trainNumber}} :
+                  {{composition.compositions.journeySections[0].beginTimeTableRow.stationShortCode}}
+                  -
+                  {{composition.compositions.journeySections[0].endTimeTableRow.stationShortCode || composition.compositions.errorMessage}}
+                  <br></br>
+                  Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
+                  -
+                  {{composition.compositions.journeySections[0].locomotives[0].powerType}}
+                  <ul class = "wagons">
+                    Wagons:
+                    <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
+                  </ul>
+                  Length:
+                  {{composition.compositions.journeySections[0].totalLength}} m
+                  -
+                  Max speed:
+                  {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                </li>
+              </ul>
+            </div>
+
+            <div id = "trainNotRunningList" class = "col-md-6 col-sm-6 col-xs-12">
+              <h3>NOT CURRENTLY RUNNING</h3>
+              <ul id = "notRunningList">
+                <li ng-repeat="composition in trains" ng-show = "!composition.runningCurrently">
+                  {{composition.trainType}} {{composition.trainNumber}} :
+                  {{composition.compositions.journeySections[0].beginTimeTableRow.stationShortCode}}
+                  -
+                  {{composition.compositions.journeySections[0].endTimeTableRow.stationShortCode || composition.compositions.errorMessage}}
+                  <br></br>
+                  Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
+                  -
+                  {{composition.compositions.journeySections[0].locomotives[0].powerType}}
+                  <ul class = "wagons">
+                    Wagons:
+                    <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
+                  </ul>
+                  Length:
+                  {{composition.compositions.journeySections[0].totalLength}} m
+                  -
+                  Max speed:
+                  {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                </li>
+              </ul>
+            </div>
+          </div> <!-- End row -->
+        </div> <!-- End of container -->
+      </div> <!-- End appCtrl -->
+    </div> <!-- End div content -->
+
+  </body>
+</html>

@@ -1,0 +1,68 @@
+body{
+  font-family: Helvetica;
+}
+
+h3{
+  font-style: italic;
+}
+
+#menu-bar{
+  background: crimson;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+#station{
+  text-align: center;
+}
+
+select{
+  border-radius: 10px;
+}
+
+#trainRunningList{
+  margin-top: 50px;
+  text-align: center;
+  background: #6DFF67;
+  border-radius: 10px;
+}
+
+#trainNotRunningList{
+  margin-top: 50px;
+  text-align: center;
+  background: #FF7B67;
+  border-radius: 10px;
+}
+
+#runningList{
+  padding: 0;
+  list-style-type: none;
+  margin: 30px 0;
+}
+
+#runningList li{
+  padding: 15px 0;
+  border-top: 1px solid black;
+  color: #444;
+  font-weight: bold;
+}
+
+#notRunningList{
+  padding: 0;
+  list-style-type: none;
+  margin: 30px 0;
+}
+
+#notRunningList li{
+  padding: 15px 0;
+  border-top: 1px solid #e2e2e2;
+  color: #444;
+  font-weight: bold;
+}
+
+.wagons li{
+  display: inline-block;
+  margin-left: 5px;
+  border-style: none !important;
+}
