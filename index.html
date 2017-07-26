@@ -53,18 +53,20 @@
                   -
                   {{composition.compositions.journeySections[0].endTimeTableRow.stationShortCode || composition.compositions.errorMessage}}
                   <br></br>
-                  Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
-                  -
-                  {{composition.compositions.journeySections[0].locomotives[0].powerType}}
-                  <ul class = "wagons">
-                    Wagons:
-                    <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
-                  </ul>
-                  Length:
-                  {{composition.compositions.journeySections[0].totalLength}} m
-                  -
-                  Max speed:
-                  {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                  <span ng-hide = "composition.compositions.errorMessage">
+                    Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
+                    -
+                    {{composition.compositions.journeySections[0].locomotives[0].powerType}}
+                    <ul class = "wagons">
+                      Wagons:
+                      <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
+                    </ul>
+                    Length:
+                    {{composition.compositions.journeySections[0].totalLength}} m
+                    -
+                    Max speed:
+                    {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                  </span>
                 </li>
               </ul>
             </div>
@@ -78,18 +80,20 @@
                   -
                   {{composition.compositions.journeySections[0].endTimeTableRow.stationShortCode || composition.compositions.errorMessage}}
                   <br></br>
-                  Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
-                  -
-                  {{composition.compositions.journeySections[0].locomotives[0].powerType}}
-                  <ul class = "wagons">
-                    Wagons:
-                    <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
-                  </ul>
-                  Length:
-                  {{composition.compositions.journeySections[0].totalLength}} m
-                  -
-                  Max speed:
-                  {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                  <span ng-hide = "composition.compositions.errorMessage">
+                    Locomotives: {{composition.compositions.journeySections[0].locomotives[0].locomotiveType}}
+                    -
+                    {{composition.compositions.journeySections[0].locomotives[0].powerType}}
+                    <ul class = "wagons">
+                      Wagons:
+                      <li ng-repeat = "wagon in composition.compositions.journeySections[0].wagons">{{wagon.wagonType}}</li>
+                    </ul>
+                    Length:
+                    {{composition.compositions.journeySections[0].totalLength}} m
+                    -
+                    Max speed:
+                    {{composition.compositions.journeySections[0].maximumSpeed}} km/h
+                  </span>
                 </li>
               </ul>
             </div>
